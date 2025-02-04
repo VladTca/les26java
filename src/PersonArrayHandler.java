@@ -16,8 +16,8 @@ public class PersonArrayHandler {
         int temp = 0;
         int indexTemp = 0;
         for (int i = index; i < array.length; i++) {
-            if (array[i].getAge() > temp) {
-                temp = array[i].getAge();
+            if (array[i].age() > temp) {
+                temp = array[i].age();
                 indexTemp = i;
             }
         }
@@ -25,8 +25,8 @@ public class PersonArrayHandler {
     }
 
     boolean isPersonExists(Person person) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(person)) {
+        for (Person value : array) {
+            if (value.equals(person)) {
                 return true;
             }
         }
@@ -35,8 +35,8 @@ public class PersonArrayHandler {
 
     boolean isPersonExists(Person[] person) {
         boolean isExist = false;
-        for (int i = 0; i < person.length; i++) {
-            if (isPersonExists(person[i])) {
+        for (Person value : person) {
+            if (isPersonExists(value)) {
                 isExist = true;
             } else {
                 isExist = false;
@@ -46,21 +46,21 @@ public class PersonArrayHandler {
         return isExist;
     }
 
-    List retainAll(Person[] person) {
+     public List<Person> retainAll(Person[] person) {
         List<Person> list = new ArrayList<>();
-        for (int i = 0; i < person.length; i++) {
-            if (isPersonExists(person[i])) {
-                list.add(person[i]);
-            }
-        }
+         for (Person value : person) {
+             if (isPersonExists(value)) {
+                 list.add(value);
+             }
+         }
         return list;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            sb.append(array[i] + "\n");
+        for (Person person : array) {
+            sb.append(person).append("\n");
         }
         return sb.toString();
     }

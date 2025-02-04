@@ -1,21 +1,8 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Person person0 = new Person("John", 20);
-        Person person1 = new Person("Jane", 25);
-        Person person2 = new Person("Jin", 30);
-        Person person3 = new Person("Alice", 22);
-        Person person4 = new Person("Bob", 28);
-        Person person5 = new Person("Charlie", 35);
-        Person person6 = new Person("Diana", 27);
-        Person person7 = new Person("Eve", 24);
-        Person person8 = new Person("Frank", 32);
-        Person person9 = new Person("Grace", 29);
-        Person[] persons = {person0, person1, person2, person3, person4, person5, person6, person7, person8, person9};
-
-        PersonArrayHandler personArrayHandler = new PersonArrayHandler(persons);
+        PersonArrayHandler personArrayHandler = getPersonArrayHandler();
         System.out.println(personArrayHandler);
         System.out.println();
         System.out.println(personArrayHandler.indexOfMaxAgePerson());
@@ -34,8 +21,24 @@ public class Main {
         System.out.println();
         List<Person> list = personArrayHandler.retainAll(newPersons2);
         for (Person person : list) {
-            System.out.println(person.getName() + " " + person.getAge());
+            System.out.println(person.name() + " " + person.age());
         }
 
+    }
+
+    private static PersonArrayHandler getPersonArrayHandler() {
+        Person person0 = new Person("John", 20);
+        Person person1 = new Person("Jane", 25);
+        Person person2 = new Person("Jin", 30);
+        Person person3 = new Person("Alice", 22);
+        Person person4 = new Person("Bob", 28);
+        Person person5 = new Person("Charlie", 35);
+        Person person6 = new Person("Diana", 27);
+        Person person7 = new Person("Eve", 24);
+        Person person8 = new Person("Frank", 32);
+        Person person9 = new Person("Grace", 29);
+        Person[] persons = {person0, person1, person2, person3, person4, person5, person6, person7, person8, person9};
+
+        return new PersonArrayHandler(persons);
     }
 }
